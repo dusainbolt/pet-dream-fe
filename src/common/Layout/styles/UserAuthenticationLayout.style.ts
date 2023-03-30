@@ -7,14 +7,20 @@ export const userAuthenticationLayoutStyles = (drawerWidth: number) =>
     boxMain: {
       // background: DEFAULT_STYLE.primaryColorLight,
       flexGrow: 1,
-      padding: theme.spacing(3),
-      height: 'calc(calc(var(--vh, 1vh) * 100))',
+      // padding: theme.spacing(3),
+      minHeight: 'calc(calc(var(--vh, 1vh) * 100))',
       [theme.breakpoints.up('sm')]: {
         width: `calc(100% - ${drawerWidth}px)`,
       } as CSSProperties,
     },
     navDrawer: {
-      '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+      '& .MuiDrawer-paper': {
+        boxSizing: 'border-box',
+        width: drawerWidth,
+        [theme.breakpoints.down('sm')]: {
+          width: '100%',
+        } as CSSProperties,
+      },
     },
     appBar: {
       background: 'white',

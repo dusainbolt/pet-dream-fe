@@ -16,4 +16,8 @@ export default class Helper {
   static isOkResponse = (response: AppError) => {
     return !response?.error && !response.errorCode;
   };
+
+  static display = (val: any) => {
+    return val || '😸';
+  };
 }

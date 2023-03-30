@@ -5,10 +5,10 @@ import {
   getSystemTopicsStart,
   getTopicDetailStart,
   getTopicMessagesStart,
-} from '@redux/slices/topicSlice';
+} from '@redux/slices/petSlice';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { AccountRole } from '@type/account';
-import { InputTopic } from '@type/topic';
+import { InputTopic } from '@type/pet';
 import { useState } from 'react';
 
 export interface UseTopic {

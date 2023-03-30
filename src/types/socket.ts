@@ -1,5 +1,5 @@
 import { Message } from './message';
-import { Topic } from './topic';
+import { Topic } from './pet';
 
 export type SocketSlice = {
   isLoadingSendMessage?: boolean;

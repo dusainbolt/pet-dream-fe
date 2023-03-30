@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { FC, Fragment } from 'react';
 
 const ForgotPasswordPage: FC<any> = () => {
-  const token = useRedirectAuth({ redirect: '/bang-dieu-khien', isEmptyToken: true });
+  const token = useRedirectAuth({ redirect: '/pet-cua-ban', isEmptyToken: true });
 
   return (
     <Fragment>

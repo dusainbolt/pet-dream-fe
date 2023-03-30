@@ -13,7 +13,8 @@ type DefaultStyle = {
 
 export const DEFAULT_STYLE: DefaultStyle = {
   primaryColor: '#6959CC',
-  primaryColorLight: '#E9E7F8',
+  primaryColorLight: '#F5F4F6',
+  // primaryColorLight: '#E9E7F8',
   ellipseText: (row: number) => ({
     display: '-webkit-box',
     textOverflow: 'ellipsis',
@@ -103,7 +104,7 @@ export const getThemeConfig = (mode: PaletteMode) => ({
     },
   },
   typography: {
-    fontFamily: `system-ui`,
+    fontFamily: `Roboto`,
   },
   components: {
     MuiTypography: {

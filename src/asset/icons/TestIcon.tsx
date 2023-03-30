@@ -1,7 +1,7 @@
 export default function TestIcon({ width = 24, color = 'red' }) {
   return (
     <svg
-      style={{ width, color }}
+      style={{ width, color: color || 'none' }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"

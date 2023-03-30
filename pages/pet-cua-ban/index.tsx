@@ -1,13 +1,14 @@
 import DashboardComponent from '@components/Dashboard/DashboardComponent';
 import { useGetAccountInfo } from '@hooks/useGetAccountInfo';
+import { useGetMyPets } from '@hooks/useGetMyPets';
 import { useRedirectAuth } from '@hooks/useRedirectAuth';
-import useSocket from '@hooks/useSocket';
 import Head from 'next/head';
 import { FC, Fragment } from 'react';
 
 const InboxDefaultPage: FC<any> = () => {
-  // const token = useRedirectAuth({ redirect: '/', isEmptyToken: false });
-  // useGetAccountInfo(token as string);
+  const token = useRedirectAuth({ redirect: '/', isEmptyToken: false });
+  useGetAccountInfo(token as string);
+  useGetMyPets(token as string);
   // useSocket();
   return (
     <Fragment>
@@ -15,7 +16,7 @@ const InboxDefaultPage: FC<any> = () => {
         <title>PetDream</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <DashboardComponent />
+      {token && <DashboardComponent />}
     </Fragment>
   );
 };

@@ -7,31 +7,34 @@ import clsx from 'clsx';
 export default function UsernameAvatar({
   className = '',
   name = '',
-  url = '',
+  src = '',
   direction = 'row',
-  onClick,
+  avatarClick,
 }: {
   className?: string;
   name?: string;
-  url: string;
+  src: string;
   direction?: ResponsiveStyleValue<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
-  onClick?: any;
+  avatarClick?: any;
 }) {
   return (
     <Stack
-      sx={{
-        cursor: onClick && 'pointer',
-        '&:hover': {
-          opacity: onClick && '0.7',
-        },
-      }}
+      sx={
+        {
+          // cursor: avatarClick && 'pointer',
+          // '&:hover': {
+          //   opacity: avatarClick && '0.7',
+          // },
+        }
+      }
       direction={direction}
       alignItems="center"
       spacing={1}
       className={clsx(className)}
+      // avatarClick={avatarClick}
     >
       <p style={{ color: DEFAULT_STYLE.primaryColor, fontWeight: 500 }}>{name}</p>
-      <Avatar alt={name} src={url} />
+      <Avatar onClick={avatarClick} alt={name} src={src} />
     </Stack>
   );
 }

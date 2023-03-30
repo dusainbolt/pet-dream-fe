@@ -12,14 +12,14 @@ import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import { getAccountSlice } from '@redux/slices/accountSlice';
 import { getLayoutSlice, openDialogApp } from '@redux/slices/layoutSlice';
-import { getTopicSlice } from '@redux/slices/topicSlice';
+import { getTopicSlice } from '@redux/slices/petSlice';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { AccountRole } from '@type/account';
 import { Formik } from 'formik';
 import { ReactNode, useEffect, useState } from 'react';
-import { validateCreateTopic, valuesCreateTopic } from 'src/yup/validateTopic';
+import { validateCreatePet, valuesCreateTopic } from 'src/yup/validatePet';
 import { ChatList } from '../../components/Inbox/ChatList';
-import { ChatMenu } from '../../components/Inbox/ChatMenu';
+import { ChatMenu } from './LayoutComponent/AccountPopoverMenu';
 import { chatLayoutStyles } from './styles/ChatLayout.style';
 
 const drawerWidth = 320;
@@ -103,7 +103,7 @@ export const ChatLayout = (props: Props) => {
         <Box className={styles.boxChatList}>
           <Formik
             onSubmit={props.onSubmitCreateTopic}
-            validationSchema={validateCreateTopic}
+            validationSchema={validateCreatePet}
             initialValues={valuesCreateTopic}
           >
             <TopicForm visible={isCreatingTopic} />

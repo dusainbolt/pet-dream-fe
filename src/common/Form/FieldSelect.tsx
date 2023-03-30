@@ -45,8 +45,15 @@ const FieldSelect: FC<FieldSelectType> = ({ label, options, className, field, sx
   return (
     <Box
       sx={{
-        mt: 2,
+        mt: 1,
+        width: '100%',
         ...sx,
+
+        '& label': {
+          color: '#646A6F',
+          fontSize: 16,
+        },
+
         '& .Mui-disabled': {
           background: '#ebebeb',
         },

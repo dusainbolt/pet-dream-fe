@@ -19,6 +19,9 @@ const Constant = {
   delayAPI: 500,
   delaySocket: 300,
   ADMIN_ID: 1,
+  IMG: {
+    DEFAULT_16_9: 'https://www.urbansplash.co.uk/images/placeholder-16-9.jpg',
+  },
 };
 
 export default Constant;

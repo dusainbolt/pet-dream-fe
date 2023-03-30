@@ -11,6 +11,7 @@ import Helper from '@utils/helper';
 import clsx from 'clsx';
 import { FieldInputProps, FieldMetaProps, useFormikContext } from 'formik';
 import { FC } from 'react';
+import { FormLabel } from './FormLabel';
 
 export const fieldSelectStyle = makeStyles({
   label: {
@@ -42,10 +43,35 @@ const FieldDate: FC<FieldDateType> = ({ label, className, sx, field }) => {
   };
 
   return (
-    <Box sx={{ ...sx }} className={clsx(className)}>
+    <Box
+      sx={{
+        mt: 1,
+        width: '100%',
+        ...sx,
+        '& label': {
+          color: '#646A6F',
+          fontSize: 16,
+        },
+      }}
+      className={clsx(className)}
+    >
+      <FormLabel fieldName={field?.name} label={label} />
+      {/* <TextField
+        fullWidth
+        id={field?.name}
+        name={field?.name}
+        value={field?.value}
+        onChange={onChangeInput as any}
+        error={showError && isError}
+        size="small"
+        helperText={showError && fieldTouch && fieldError}
+        variant="outlined"
+        onKeyPress={handleKeyPress as any}
+        {...fieldProps}
+      /> */}
       <LocalizationProvider dateAdapter={DateAdapter}>
         <DatePicker
-          label={label}
+          // label={label}
           value={Date.renderDayjs(field?.value)}
           inputFormat={Constant.date.D_M_Y}
           onChange={handleChange}

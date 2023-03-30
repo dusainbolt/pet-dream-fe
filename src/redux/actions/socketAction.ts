@@ -1,6 +1,6 @@
 import { PayloadName } from '@redux/reducer';
 import { sendMessageSuccess } from '@redux/slices/socketSlice';
-import { socketNewTopicReceive, socketTopicMessagesReceive } from '@redux/slices/topicSlice';
+import { socketNewTopicReceive, socketTopicMessagesReceive } from '@redux/slices/petSlice';
 import { Account, AccountRole } from '@type/account';
 import { Message } from '@type/message';
 import { SocketSendMessageDto, SocketTopicMessagesReceiveDto } from '@type/socket';

@@ -3,7 +3,7 @@ import accountSlice from './slices/accountSlice';
 import authSlice from './slices/authSlice';
 import layoutSlice from './slices/layoutSlice';
 import socketSlice from './slices/socketSlice';
-import topicSlice from './slices/topicSlice';
+import petSlice from './slices/petSlice';
 
 export const whitelist = [];
 
@@ -11,7 +11,7 @@ export const rootReducer = combineReducers({
   layoutSlice,
   authSlice,
   accountSlice,
-  topicSlice,
+  petSlice,
   socketSlice,
 });
 

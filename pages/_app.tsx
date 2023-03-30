@@ -21,6 +21,7 @@ import { ToastContainer } from 'react-toastify';
 import { Store } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { AppDialog } from '@common/Dialog';
+import { AppDrawer } from '@common/Drawer';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -107,6 +108,7 @@ const MyApp: FC<MyAppProps> = (props: MyAppProps) => {
               <ToastContainer />
               {/* import dialog */}
               <AppDialog />
+              <AppDrawer />
             </NoSsr>
           </ThemeProvider>
         </ColorModeContext.Provider>
