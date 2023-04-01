@@ -59,7 +59,7 @@ export const PetNewCard = () => {
       <CardMedia
       // component="div"
       // height="194"
-      // image="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c"
+      // image="https://images.unsplash.c om/photo-1444418776041-9c7e33cc5a9c"
       // alt="Paella dish"
       >
         <Carousel dynamicHeight showThumbs={false} showArrows>
