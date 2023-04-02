@@ -1,6 +1,7 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import { Pet } from '@type/pet';
 import Constant from '@utils/constant';
+import Helper from '@utils/helper';
 import Link from 'next/link';
 
 export const PetCard = ({ pet }: { pet: Pet }) => {
@@ -8,7 +9,7 @@ export const PetCard = ({ pet }: { pet: Pet }) => {
     <Card sx={{ height: '100%' }}>
       <Link href={`/pet/${pet.id}`}>
         <CardActionArea sx={{ height: '100%' }}>
-          <CardMedia component="img" height="140" image={Constant.IMG.DEFAULT_16_9} alt="green iguana" />
+          <CardMedia component="img" height="140" image={Helper.genPetAvatar(pet?.avatar)} alt="green iguana" />
           <CardContent sx={{ height: '100%' }}>
             <Typography gutterBottom variant="h5" component="div">
               {pet?.name} | {pet?.nickName}

@@ -1,5 +1,5 @@
 import { IPaginationQuery } from '@type/context';
-import { PetCreateDto } from '@type/pet';
+import { PetCreateDto, PetUpdateAvatarDto, PetUpdateCoverDto } from '@type/pet';
 import axios from './axios';
 
 export class PetRequest {
@@ -17,5 +17,13 @@ export class PetRequest {
 
   static getPetInfo = async (id: any) => {
     return await axios.get(`/pets/${id}`);
+  };
+
+  static updateAvatar = async (petId: any, body: PetUpdateAvatarDto) => {
+    return await axios.post(`/pets/${petId}/avatar`, body);
+  };
+
+  static updateCover = async (petId: any, body: PetUpdateCoverDto) => {
+    return await axios.post(`/pets/${petId}/cover`, body);
   };
 }

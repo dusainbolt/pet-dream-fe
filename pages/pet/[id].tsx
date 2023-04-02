@@ -29,9 +29,14 @@ const PetProfile: FC<any> = () => {
 export default PetProfile;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const listPets: Pet[] = (await PetRequest.getListPets({ limit: 30, page: 1 })).data;
-  const paths = listPets.map((item) => ({ params: { id: item.id.toString() } }));
-  return { paths, fallback: true };
+  try {
+    const listPets: Pet[] = (await PetRequest.getListPets({ limit: 30, page: 1 })).data;
+    const paths = listPets.map((item) => ({ params: { id: item.id.toString() } }));
+    return { paths, fallback: true };
+  } catch (e) {
+    console.log('getStaticPaths ERROR: ', e);
+    return { paths: [], fallback: true };
+  }
 };
 
 export const getStaticProps = wrapper.getStaticProps(
@@ -39,13 +44,18 @@ export const getStaticProps = wrapper.getStaticProps(
     async (context: GetStaticPropsContext | any) => {
       // await Helper.delay(1500);
       const id: any = context.params.id;
-      // request here
-      const petInfo = (await PetRequest.getPetInfo(id)).data;
-      // dispatch data store here here
-      store.dispatch(getPetInfoSuccess(petInfo));
-      // end the saga
-      store.dispatch(END);
-      await store.sagaTask.toPromise();
+      try {
+        // request here
+        const petInfo = (await PetRequest.getPetInfo(id)).data;
+        // dispatch data store here here
+        store.dispatch(getPetInfoSuccess(petInfo));
+        // end the saga
+        store.dispatch(END);
+        await store.sagaTask.toPromise();
+        return { props: { id } };
+      } catch (e) {
+        console.log('getStaticProps ERROR: ', e);
+      }
       return { props: { id } };
     }
 );

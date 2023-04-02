@@ -44,6 +44,7 @@ export type Pet = {
   favorite: string;
   birthday: string;
   avatar: string;
+  cover: string;
   gender: PetGender;
   tail: PetTail;
   ear: PetEar;
@@ -65,26 +66,13 @@ export type InputPet = {
 
 export type PetCreateDto = InputPet;
 
-// export interface GetMyTopicsDto extends IPaginationQuery {
-//   lastMessage?: string;
-//   account?: string;
-// }
+export type PetUpdateAvatarDto = {
+  avatar: File;
+};
 
-// export interface GetSystemTopicsDto extends IPaginationQuery {
-//   lastMessage?: string;
-//   account?: string;
-// }
-
-// export interface GetTopicDetailDto {
-//   account?: string;
-// }
-
-// export interface GetTopicMessagesDto {
-//   topicId?: number;
-//   query?: IPaginationQuery & {
-//     latestMessageId?: number;
-//   };
-// }
+export type PetUpdateCoverDto = {
+  cover: File;
+};
 
 export type PetValue = {
   id: number;
@@ -97,6 +85,8 @@ export type PetSlice = {
   // state logic
   loadingGetMyPets?: boolean;
   loadingAddPet?: boolean;
+  loadingUpdateAvatarPet?: boolean;
+  loadingUpdateCoverPet?: boolean;
 
   // newTopicId?: number;
   // loadingGetTopic?: boolean;
@@ -105,6 +95,8 @@ export type PetSlice = {
   // loadingLoadMoreTopicMessages?: boolean;
   errorGetMyPets?: AppError;
   errorAddPet?: AppError;
+  errorUpdateAvatarPet?: AppError;
+  errorUpdateCoverPet?: AppError;
   // errorGetTopics?: AppError;
   // errorGetTopicMessages?: AppError;
   loadedMyPets?: boolean;

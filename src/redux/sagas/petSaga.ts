@@ -1,4 +1,9 @@
-import { AddPetStartAction, GetMyPetsStartAction } from '@redux/actions/petAction';
+import {
+  AddPetStartAction,
+  GetMyPetsStartAction,
+  UpdateAvatarPetStartAction,
+  UpdateCoverPetStartAction,
+} from '@redux/actions/petAction';
 import { closeDrawerApp } from '@redux/slices/layoutSlice';
 import {
   addPetError,
@@ -7,6 +12,12 @@ import {
   getMyPetsError,
   getMyPetsStart,
   getMyPetsSuccess,
+  updateAvatarPetError,
+  updateAvatarPetStart,
+  updateAvatarPetSuccess,
+  updateCoverPetError,
+  updateCoverPetStart,
+  updateCoverPetSuccess,
 } from '@redux/slices/petSlice';
 import { PetRequest } from '@request/petRequest';
 import Constant from '@utils/constant';
@@ -44,7 +55,39 @@ function* watchAddPet({ payload }: AddPetStartAction) {
   }
 }
 
+function* watchUpdateAvatarPet({ payload }: UpdateAvatarPetStartAction) {
+  try {
+    const response = yield PetRequest.updateAvatar(payload.petId, payload.body);
+    yield delay(Constant.delayAPI);
+    if (Helper.isOkResponse(response)) {
+      toast.success('Chỉnh sửa ảnh đại diện thành công');
+      yield put(updateAvatarPetSuccess(response.data));
+    } else {
+      yield put(updateAvatarPetError(response));
+    }
+  } catch (error: any) {
+    yield put(updateAvatarPetError(null as any));
+  }
+}
+
+function* watchUpdateCoverPet({ payload }: UpdateCoverPetStartAction) {
+  try {
+    const response = yield PetRequest.updateCover(payload.petId, payload.body);
+    yield delay(Constant.delayAPI);
+    if (Helper.isOkResponse(response)) {
+      toast.success('Chỉnh sửa ảnh đại diện thành công');
+      yield put(updateCoverPetSuccess(response.data));
+    } else {
+      yield put(updateCoverPetError(response));
+    }
+  } catch (error: any) {
+    yield put(updateCoverPetError(null as any));
+  }
+}
+
 export default function* petSaga(): any {
   yield takeLatest(getMyPetsStart, watchGetMyPets);
   yield takeLatest(addPetStart, watchAddPet);
+  yield takeLatest(updateAvatarPetStart, watchUpdateAvatarPet);
+  yield takeLatest(updateCoverPetStart, watchUpdateCoverPet);
 }

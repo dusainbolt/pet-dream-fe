@@ -6,8 +6,11 @@ import {
   GetMyPetsStartAction,
   GetMyPetsSuccessAction,
   GetPetInfoSuccessAction,
+  UpdateAvatarPetStartAction,
+  UpdateAvatarPetSuccessAction,
+  UpdateCoverPetStartAction,
+  UpdateCoverPetSuccessAction,
 } from '@redux/actions/petAction';
-import { GetMyTopicsStartAction, GetMyTopicsSuccessAction } from '@redux/actions/topicAction';
 import { getPersistConfig } from '@redux/storage';
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { ErrorAction } from '@type/context';
@@ -58,6 +61,34 @@ const petSlice = createSlice({
       state.errorAddPet = payload;
     },
 
+    // update avatar pet dispatch
+    updateAvatarPetStart: (state: PetSlice, { payload }: UpdateAvatarPetStartAction) => {
+      state.loadingUpdateAvatarPet = !!payload.petId;
+    },
+    updateAvatarPetSuccess: (state: PetSlice, { payload }: UpdateAvatarPetSuccessAction) => {
+      state.loadingUpdateAvatarPet = false;
+      state.errorUpdateAvatarPet = undefined;
+      state.petInfo = { ...state.petInfo, ...payload };
+    },
+    updateAvatarPetError: (state: PetSlice, { payload }: ErrorAction) => {
+      state.loadingUpdateAvatarPet = false;
+      state.errorUpdateAvatarPet = payload;
+    },
+
+    // update cover pet dispatch
+    updateCoverPetStart: (state: PetSlice, { payload }: UpdateCoverPetStartAction) => {
+      state.loadingUpdateCoverPet = !!payload.petId;
+    },
+    updateCoverPetSuccess: (state: PetSlice, { payload }: UpdateCoverPetSuccessAction) => {
+      state.loadingUpdateCoverPet = false;
+      state.errorUpdateCoverPet = undefined;
+      state.petInfo = { ...state.petInfo, ...payload };
+    },
+    updateCoverPetError: (state: PetSlice, { payload }: ErrorAction) => {
+      state.loadingUpdateCoverPet = false;
+      state.errorUpdateCoverPet = payload;
+    },
+
     // pet info dispatch
     getPetInfoSuccess: (state: PetSlice, { payload }: GetPetInfoSuccessAction) => {
       state.petInfo = payload;
@@ -82,6 +113,12 @@ export const {
   addPetStart,
   addPetSuccess,
   addPetError,
+  updateAvatarPetStart,
+  updateAvatarPetSuccess,
+  updateAvatarPetError,
+  updateCoverPetStart,
+  updateCoverPetSuccess,
+  updateCoverPetError,
   getPetInfoSuccess,
 } = petSlice.actions;
 

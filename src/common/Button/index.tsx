@@ -1,6 +1,5 @@
 import { LoadingButton, LoadingButtonProps } from '@mui/lab';
 import { Tooltip } from '@mui/material';
-import { DEFAULT_STYLE } from '@styles/theme';
 import { FC } from 'react';
 
 export interface ButtonProps extends LoadingButtonProps {
@@ -11,10 +10,9 @@ export interface ButtonProps extends LoadingButtonProps {
 export const Button: FC<ButtonProps> = ({ children, triggerLogin, onClick, helpText = '', ...props }) => {
   const button = (
     <LoadingButton
-      fullWidth
       {...props}
       sx={{
-        ...(props.variant === 'contained' && DEFAULT_STYLE.btnStyle()),
+        // ...(props.variant === 'contained' && DEFAULT_STYLE.btnStyle()),
         ...props.sx,
         textTransform: 'none',
       }}

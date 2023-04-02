@@ -22,6 +22,10 @@ const Constant = {
   IMG: {
     DEFAULT_16_9: 'https://www.urbansplash.co.uk/images/placeholder-16-9.jpg',
   },
+  DIR: {
+    petAvatar: `images/pet-avatars`,
+    petCover: `images/pet-covers`,
+  },
 };
 
 export default Constant;
